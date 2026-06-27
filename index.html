@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IA TOM</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Fraunces:opsz,wght@9..144,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="app-shell">
+    <section class="chat-app">
+      <header class="app-header">
+        <div>
+          <p class="eyebrow">IA TOM</p>
+          <h1>assistente afetivo personalizado</h1>
+          <p class="header-note">Inspirado no jeito do Tom para ajudar a escrever com carinho, humor e maturidade.</p>
+        </div>
+        <div class="header-actions">
+          <button id="toggle-settings" class="secondary-button" type="button" aria-expanded="false" aria-controls="settings-panel">
+            Configuracoes
+          </button>
+          <button id="clear-chat" class="ghost-button" type="button">
+            Limpar conversa
+          </button>
+        </div>
+      </header>
+
+      <section class="chat-card" aria-label="Conversa IA TOM">
+        <div id="chat-history" class="chat-history"></div>
+
+        <form id="chat-form" class="chat-form">
+          <label class="sr-only" for="message-input">Escreva sua mensagem</label>
+          <textarea
+            id="message-input"
+            name="message"
+            rows="1"
+            maxlength="600"
+            placeholder="Escreva uma mensagem para a IA TOM..."
+          ></textarea>
+          <button class="send-button" type="submit">Enviar</button>
+        </form>
+      </section>
+    </section>
+
+    <aside id="settings-panel" class="settings-panel" aria-hidden="true">
+      <div class="settings-scroll">
+        <div class="settings-heading">
+          <div>
+            <p class="eyebrow">Personalizacao</p>
+            <h2>Configuracoes e memoria afetiva</h2>
+          </div>
+          <p class="settings-caption">Tudo fica salvo no navegador para deixar as respostas mais pessoais e consistentes.</p>
+        </div>
+
+        <form id="settings-form" class="settings-form">
+          <section class="settings-group">
+            <h3>Perfil do casal</h3>
+
+            <label>
+              Nome da namorada
+              <input id="girlfriend-name" name="girlfriendName" type="text" placeholder="Alana">
+            </label>
+
+            <label>
+              Nome ou apelido do namorado
+              <input id="boyfriend-name" name="boyfriendName" type="text" placeholder="Tom ou Antonio">
+            </label>
+
+            <label>
+              Tom das respostas
+              <select id="reply-tone" name="replyTone">
+                <option value="carinhoso">Carinhoso</option>
+                <option value="engracado">Engracado</option>
+                <option value="romantico">Romantico</option>
+                <option value="direto">Direto</option>
+                <option value="fofo">Fofo</option>
+                <option value="maduro">Maduro</option>
+                <option value="conciliador">Conciliador</option>
+              </select>
+            </label>
+
+            <label>
+              Modo da resposta
+              <select id="reply-mode" name="replyMode">
+                <option value="fofo">Fofo</option>
+                <option value="engracado">Engracado</option>
+                <option value="romantico">Romantico</option>
+                <option value="maduro">Maduro</option>
+                <option value="pedido de desculpas">Pedido de desculpas</option>
+                <option value="resolver conflito">Resolver conflito</option>
+                <option value="saudade">Saudade</option>
+                <option value="bom dia/boa noite">Bom dia/boa noite</option>
+              </select>
+            </label>
+
+            <label>
+              Contexto rapido do relacionamento
+              <textarea id="relationship-context" name="relationshipContext" rows="4" placeholder="Ex.: ele gosta de academia, conversa de forma leve, usa humor brincalhao e gosta de demonstrar carinho com presenca."></textarea>
+            </label>
+          </section>
+
+          <section class="settings-group">
+            <div class="group-title">
+              <h3>Memoria afetiva</h3>
+              <p>Preencha o que fizer sentido. A IA usa isso como contexto para responder de forma mais natural.</p>
+            </div>
+
+            <div class="memory-grid">
+              <label>
+                Apelidos carinhosos
+                <textarea id="memory-nicknames" name="nicknames" rows="3" placeholder="Ex.: amor, princesa, vida"></textarea>
+              </label>
+
+              <label>
+                Piadas internas
+                <textarea id="memory-jokes" name="insideJokes" rows="3" placeholder="Ex.: brincadeiras que sempre fazem voces rirem"></textarea>
+              </label>
+
+              <label>
+                Datas importantes
+                <textarea id="memory-dates" name="importantDates" rows="3" placeholder="Ex.: aniversario, data do namoro, viagens"></textarea>
+              </label>
+
+              <label>
+                Lugares especiais
+                <textarea id="memory-places" name="specialPlaces" rows="3" placeholder="Ex.: cafeteria preferida, praca, academia"></textarea>
+              </label>
+
+              <label>
+                Gostos da Alana
+                <textarea id="memory-likes" name="alanaLikes" rows="3" placeholder="Ex.: musicas, comidas, hobbies, jeitos de receber carinho"></textarea>
+              </label>
+
+              <label>
+                O que deixa Alana feliz
+                <textarea id="memory-happy" name="alanaHappy" rows="3" placeholder="Ex.: mensagens de bom dia, atencao, tempo junto"></textarea>
+              </label>
+
+              <label>
+                O que irrita Alana
+                <textarea id="memory-irritates" name="alanaIrritates" rows="3" placeholder="Ex.: demora para responder, promessas vagas"></textarea>
+              </label>
+
+              <label>
+                O que ela nao gosta
+                <textarea id="memory-dislikes" name="alanaDislikes" rows="3" placeholder="Ex.: brincadeiras agressivas, ironia, frieza"></textarea>
+              </label>
+
+              <label>
+                Frases que ele costuma usar
+                <textarea id="memory-phrases" name="commonPhrases" rows="3" placeholder="Ex.: eu entendo, fica comigo nisso, relaxa meu amor"></textarea>
+              </label>
+
+              <label>
+                Estilo de humor do casal
+                <textarea id="memory-humor" name="humorStyle" rows="3" placeholder="Ex.: piada leve, zoeira carinhosa, memes bobos"></textarea>
+              </label>
+
+              <label>
+                Formas preferidas de demonstrar carinho
+                <textarea id="memory-affection" name="affectionStyle" rows="3" placeholder="Ex.: elogios simples, mensagens curtas, presenca"></textarea>
+              </label>
+
+              <label>
+                Temas sensiveis a evitar
+                <textarea id="memory-sensitive" name="sensitiveTopics" rows="3" placeholder="Ex.: insegurancas, assuntos delicados, gatilhos"></textarea>
+              </label>
+            </div>
+          </section>
+
+          <div class="settings-actions">
+            <button class="secondary-button" type="submit">Salvar personalizacao</button>
+          </div>
+        </form>
+      </div>
+    </aside>
+  </main>
+
+  <script src="src/main.js"></script>
+</body>
+</html>
