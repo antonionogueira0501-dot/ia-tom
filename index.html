@@ -1,182 +1,141 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>IA TOM</title>
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Fraunces:opsz,wght@9..144,600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="styles.css" />
 </head>
+
 <body>
-  <main class="app-shell">
-    <section class="chat-app">
-      <header class="app-header">
-        <div>
-          <p class="eyebrow">IA TOM</p>
-          <h1>assistente afetivo personalizado</h1>
-          <p class="header-note">Inspirado no jeito do Tom para ajudar a escrever com carinho, humor e maturidade.</p>
-        </div>
-        <div class="header-actions">
-          <button id="toggle-settings" class="secondary-button" type="button" aria-expanded="false" aria-controls="settings-panel">
-            Configuracoes
-          </button>
-          <button id="clear-chat" class="ghost-button" type="button">
-            Limpar conversa
-          </button>
-        </div>
-      </header>
+  <main class="app">
+    <aside class="sidebar">
+      <div class="brand">
+        <h1>IA TOM ♥</h1>
+        <p>um pedacinho de mim,<br>sempre com você.</p>
+      </div>
 
-      <section class="chat-card" aria-label="Conversa IA TOM">
-        <div id="chat-history" class="chat-history"></div>
+      <nav class="nav">
+        <button class="nav-item active" data-view="home">🏠 Casa</button>
+        <button class="nav-item" data-view="chat">💬 Conversar</button>
+        <button class="nav-item" data-view="dump">💌 Desabafos <span>novo</span></button>
+        <button class="nav-item" data-view="memories">🖼️ Memórias</button>
+        <button class="nav-item" data-view="letters">✉️ Cartas</button>
+      </nav>
 
-        <form id="chat-form" class="chat-form">
-          <label class="sr-only" for="message-input">Escreva sua mensagem</label>
-          <textarea
-            id="message-input"
-            name="message"
-            rows="1"
-            maxlength="600"
-            placeholder="Escreva uma mensagem para a IA TOM..."
-          ></textarea>
-          <button class="send-button" type="submit">Enviar</button>
-        </form>
-      </section>
-    </section>
-
-    <aside id="settings-panel" class="settings-panel" aria-hidden="true">
-      <div class="settings-scroll">
-        <div class="settings-heading">
-          <div>
-            <p class="eyebrow">Personalizacao</p>
-            <h2>Configuracoes e memoria afetiva</h2>
-          </div>
-          <p class="settings-caption">Tudo fica salvo no navegador para deixar as respostas mais pessoais e consistentes.</p>
-        </div>
-
-        <form id="settings-form" class="settings-form">
-          <section class="settings-group">
-            <h3>Perfil do casal</h3>
-
-            <label>
-              Nome da namorada
-              <input id="girlfriend-name" name="girlfriendName" type="text" placeholder="Alana">
-            </label>
-
-            <label>
-              Nome ou apelido do namorado
-              <input id="boyfriend-name" name="boyfriendName" type="text" placeholder="Tom ou Antonio">
-            </label>
-
-            <label>
-              Tom das respostas
-              <select id="reply-tone" name="replyTone">
-                <option value="carinhoso">Carinhoso</option>
-                <option value="engracado">Engracado</option>
-                <option value="romantico">Romantico</option>
-                <option value="direto">Direto</option>
-                <option value="fofo">Fofo</option>
-                <option value="maduro">Maduro</option>
-                <option value="conciliador">Conciliador</option>
-              </select>
-            </label>
-
-            <label>
-              Modo da resposta
-              <select id="reply-mode" name="replyMode">
-                <option value="fofo">Fofo</option>
-                <option value="engracado">Engracado</option>
-                <option value="romantico">Romantico</option>
-                <option value="maduro">Maduro</option>
-                <option value="pedido de desculpas">Pedido de desculpas</option>
-                <option value="resolver conflito">Resolver conflito</option>
-                <option value="saudade">Saudade</option>
-                <option value="bom dia/boa noite">Bom dia/boa noite</option>
-              </select>
-            </label>
-
-            <label>
-              Contexto rapido do relacionamento
-              <textarea id="relationship-context" name="relationshipContext" rows="4" placeholder="Ex.: ele gosta de academia, conversa de forma leve, usa humor brincalhao e gosta de demonstrar carinho com presenca."></textarea>
-            </label>
-          </section>
-
-          <section class="settings-group">
-            <div class="group-title">
-              <h3>Memoria afetiva</h3>
-              <p>Preencha o que fizer sentido. A IA usa isso como contexto para responder de forma mais natural.</p>
-            </div>
-
-            <div class="memory-grid">
-              <label>
-                Apelidos carinhosos
-                <textarea id="memory-nicknames" name="nicknames" rows="3" placeholder="Ex.: amor, princesa, vida"></textarea>
-              </label>
-
-              <label>
-                Piadas internas
-                <textarea id="memory-jokes" name="insideJokes" rows="3" placeholder="Ex.: brincadeiras que sempre fazem voces rirem"></textarea>
-              </label>
-
-              <label>
-                Datas importantes
-                <textarea id="memory-dates" name="importantDates" rows="3" placeholder="Ex.: aniversario, data do namoro, viagens"></textarea>
-              </label>
-
-              <label>
-                Lugares especiais
-                <textarea id="memory-places" name="specialPlaces" rows="3" placeholder="Ex.: cafeteria preferida, praca, academia"></textarea>
-              </label>
-
-              <label>
-                Gostos da Alana
-                <textarea id="memory-likes" name="alanaLikes" rows="3" placeholder="Ex.: musicas, comidas, hobbies, jeitos de receber carinho"></textarea>
-              </label>
-
-              <label>
-                O que deixa Alana feliz
-                <textarea id="memory-happy" name="alanaHappy" rows="3" placeholder="Ex.: mensagens de bom dia, atencao, tempo junto"></textarea>
-              </label>
-
-              <label>
-                O que irrita Alana
-                <textarea id="memory-irritates" name="alanaIrritates" rows="3" placeholder="Ex.: demora para responder, promessas vagas"></textarea>
-              </label>
-
-              <label>
-                O que ela nao gosta
-                <textarea id="memory-dislikes" name="alanaDislikes" rows="3" placeholder="Ex.: brincadeiras agressivas, ironia, frieza"></textarea>
-              </label>
-
-              <label>
-                Frases que ele costuma usar
-                <textarea id="memory-phrases" name="commonPhrases" rows="3" placeholder="Ex.: eu entendo, fica comigo nisso, relaxa meu amor"></textarea>
-              </label>
-
-              <label>
-                Estilo de humor do casal
-                <textarea id="memory-humor" name="humorStyle" rows="3" placeholder="Ex.: piada leve, zoeira carinhosa, memes bobos"></textarea>
-              </label>
-
-              <label>
-                Formas preferidas de demonstrar carinho
-                <textarea id="memory-affection" name="affectionStyle" rows="3" placeholder="Ex.: elogios simples, mensagens curtas, presenca"></textarea>
-              </label>
-
-              <label>
-                Temas sensiveis a evitar
-                <textarea id="memory-sensitive" name="sensitiveTopics" rows="3" placeholder="Ex.: insegurancas, assuntos delicados, gatilhos"></textarea>
-              </label>
-            </div>
-          </section>
-
-          <div class="settings-actions">
-            <button class="secondary-button" type="submit">Salvar personalizacao</button>
-          </div>
-        </form>
+      <div class="pet-card">
+        <div class="pet-art">🐱</div>
+        <h3>Bete mandou</h3>
+        <p>um oi hoje 🐾</p>
       </div>
     </aside>
+
+    <section class="main-area">
+      <section class="hero">
+        <div>
+          <p class="small-title" id="time-greeting">Boa noite, meu amor ♥</p>
+          <h2>Que bom que você veio.</h2>
+          <p>Este é o seu lugar seguro.</p>
+        </div>
+      </section>
+
+      <section class="mood-row">
+        <button data-message="estou feliz">😊 Estou feliz</button>
+        <button data-message="preciso de apoio">☁️ Preciso de apoio</button>
+        <button data-message="estou brava com você">💔 Tô brava com você</button>
+        <button data-message="muitas coisas na cabeça">🧠 Muitas coisas na cabeça</button>
+        <button data-message="só quero conversar">✨ Só quero conversar</button>
+      </section>
+
+      <section class="content-grid">
+        <section class="chat-panel view active" id="view-home">
+          <div class="tom-card">
+            <p class="card-label">IA TOM ♥</p>
+            <p class="big-message">
+              Oi, meu amor. Eu tô aqui.<br>
+              Pode escrever tudo o que estiver sentindo, sem filtro.
+              Eu vou ler com o coração.
+            </p>
+            <span>Você não precisa organizar suas ideias.</span>
+          </div>
+
+          <form id="chat-form" class="input-box">
+            <textarea id="message-input" rows="1" placeholder="O que está passando na sua mente hoje?"></textarea>
+            <button type="submit">↑</button>
+          </form>
+
+          <div id="chat-history" class="chat-history"></div>
+        </section>
+
+        <section class="view" id="view-chat">
+          <div class="section-card">
+            <h2>Conversar</h2>
+            <p>Escreve como vier. Eu tô aqui para entender, não para julgar.</p>
+          </div>
+        </section>
+
+        <section class="view" id="view-dump">
+          <div class="section-card">
+            <h2>Desabafo livre</h2>
+            <p>Escreve tudo. Sem organizar. Sem tentar parecer bem.</p>
+            <textarea id="brain-dump" class="dump-area" placeholder="Joga tudo aqui..."></textarea>
+            <button id="dump-done" class="soft-button">Terminei de escrever</button>
+            <div id="dump-response" class="dump-response"></div>
+          </div>
+        </section>
+
+        <section class="view" id="view-memories">
+          <div class="section-card">
+            <h2>Memórias nossas</h2>
+            <div class="memory-list">
+              <article>🌸 <strong>O buquê de O Alienista</strong><br>um pequeno gesto que dizia: eu escolhi você.</article>
+              <article>🐱 <strong>Bete</strong><br>ela escolheu você antes de mim.</article>
+              <article>🎬 <strong>Attack on Titan</strong><br>a gente levando desenho a sério demais.</article>
+              <article>🎶 <strong>Tempo Perdido</strong><br>uma música que virou um pedacinho nosso.</article>
+            </div>
+          </div>
+        </section>
+
+        <section class="view" id="view-letters">
+          <div class="section-card">
+            <h2>Cartas</h2>
+            <div id="birthday-letter" class="letter locked"></div>
+          </div>
+        </section>
+
+        <aside class="right-panel">
+          <article class="note-card">
+            <h3>✉️ Carta do dia ✨</h3>
+            <p>
+              Você tem enfrentado coisas que ninguém vê.
+              E ainda assim, você continua escolhendo seguir em frente.
+              Eu tenho muito orgulho de você.
+            </p>
+          </article>
+
+          <article class="green-card">
+            <h3>🌿 Lembrete carinhoso</h3>
+            <p>
+              Respira fundo.<br>
+              Tudo passa.<br>
+              Até o que parece que não passa.
+            </p>
+          </article>
+
+          <article class="memory-card">
+            <h3>Momento nosso ♥</h3>
+            <p>
+              O começo de tudo: uma balada, uma sacola de cerâmica e uma mentira estratégica sobre ser para minha mãe.
+            </p>
+          </article>
+        </aside>
+      </section>
+    </section>
   </main>
 
   <script src="src/main.js"></script>
